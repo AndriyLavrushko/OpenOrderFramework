@@ -1,4 +1,6 @@
-﻿using OpenOrderFramework.Models;
+﻿using Microsoft.ApplicationInsights.Extensibility;
+using OpenOrderFramework.Models;
+using System.Configuration;
 using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -16,6 +18,8 @@ namespace OpenOrderFramework
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            TelemetryConfiguration.Active.InstrumentationKey = ConfigurationManager.AppSettings["ApplicationIsights:InstrumentationKey"];
         }
     }
 }

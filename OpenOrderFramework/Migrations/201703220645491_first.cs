@@ -29,6 +29,7 @@ namespace OpenOrderFramework.Migrations
                         CatagorieId = c.Int(nullable: false),
                         Name = c.String(nullable: false, maxLength: 160),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        InternalImage = c.Binary(),
                         ItemPictureUrl = c.String(maxLength: 1024),
                     })
                 .PrimaryKey(t => t.ID)
@@ -75,7 +76,9 @@ namespace OpenOrderFramework.Migrations
                         PostalCode = c.String(nullable: false, maxLength: 10),
                         Country = c.String(nullable: false, maxLength: 40),
                         Phone = c.String(nullable: false, maxLength: 24),
-                        Email = c.String(nullable: false),
+                        Experation = c.DateTime(nullable: false),
+                        SaveInfo = c.Boolean(nullable: false),
+                        Email = c.String(),
                         Total = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.OrderId);
@@ -108,6 +111,14 @@ namespace OpenOrderFramework.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        Address = c.String(),
+                        City = c.String(),
+                        State = c.String(),
+                        PostalCode = c.String(),
+                        Country = c.String(),
+                        Phone = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
